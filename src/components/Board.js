@@ -1,6 +1,21 @@
 import React from "react";
 
 const Board = ({ tiles, setTiles, x, setX }) => {
+  const getIndexes = (arr, mark) => {
+    const indexes = [];
+
+    arr.forEach((tile, i) => {
+      if (tile === mark) indexes.push(i);
+    });
+
+    return indexes;
+  };
+
+  const xIndexes = getIndexes(tiles, "X");
+  const oIndexes = getIndexes(tiles, "O");
+
+  console.log(xIndexes, oIndexes);
+
   const handleClick = e => {
     if (e.target.innerText !== "") return;
 
