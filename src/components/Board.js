@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Board = ({ tiles, setTiles, x, setX }) => {
+  const [winner, setWinner] = useState("");
+
   const getIndexes = (arr, mark) => {
     const indexes = [];
 
@@ -14,7 +16,30 @@ const Board = ({ tiles, setTiles, x, setX }) => {
   const xIndexes = getIndexes(tiles, "X");
   const oIndexes = getIndexes(tiles, "O");
 
-  console.log(xIndexes, oIndexes);
+  const checkWin = (arr, target) => target.every(i => arr.includes(i));
+
+  useEffect(() => {
+    const winIndexes = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+
+    winIndexes.forEach(win => {
+      const xWin = checkWin(xIndexes, win);
+      const oWin = checkWin(oIndexes, win);
+
+      if (xWin) setWinner("X");
+      else if (oWin) setWinner("O");
+    });
+  }, [oIndexes, xIndexes]);
+
+  console.log(winner);
 
   const handleClick = e => {
     if (e.target.innerText !== "") return;
