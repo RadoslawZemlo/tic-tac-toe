@@ -18,6 +18,8 @@ const Board = ({ tiles, setTiles, x, setX }) => {
 
   const checkWin = (arr, target) => target.every(i => arr.includes(i));
 
+  const fullfill = tiles.every(tail => tail !== "");
+
   useEffect(() => {
     const winIndexes = [
       [0, 1, 2],
@@ -36,8 +38,9 @@ const Board = ({ tiles, setTiles, x, setX }) => {
 
       if (xWin) setWinner("X");
       else if (oWin) setWinner("O");
+      else if (fullfill && !xWin && !oWin) setWinner("draw");
     });
-  }, [oIndexes, xIndexes]);
+  }, [oIndexes, xIndexes, fullfill]);
 
   console.log(winner);
 
