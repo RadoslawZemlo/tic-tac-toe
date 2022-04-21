@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header setTiles={setTiles} setX={setX} setWinner={setWinner} />
+      <Header setTiles={setTiles} x={x} setX={setX} setWinner={setWinner} />
       <Board
         tiles={tiles}
         setTiles={setTiles}

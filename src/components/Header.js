@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ setTiles, setX, setWinner }) => {
+const Header = ({ setTiles, x, setX, setWinner }) => {
   const restart = () => {
     setTiles(["", "", "", "", "", "", "", "", ""]);
     setX(true);
@@ -11,6 +11,7 @@ const Header = ({ setTiles, setX, setWinner }) => {
     <header>
       <h1>Tic Tac Toe</h1>
       <input type="submit" value="restart" onClick={restart} />
+      <p>Turn: {x ? "X" : "O"}</p>
     </header>
   );
 };

@@ -31,6 +31,11 @@ h1 {
   padding: 1rem;
 }
 
+header p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
 .board {
   border: 0.1rem solid var(--light);
   display: flex;
