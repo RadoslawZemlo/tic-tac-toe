@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import GameOver from "./GameOver";
 
-const Board = ({ tiles, setTiles, x, setX }) => {
-  const [winner, setWinner] = useState("");
-
+const Board = ({ tiles, setTiles, x, setX, winner, setWinner }) => {
   const getIndexes = (arr, mark) => {
     const indexes = [];
 
@@ -41,9 +39,7 @@ const Board = ({ tiles, setTiles, x, setX }) => {
       else if (oWin) setWinner("O");
       else if (fullfill && !xWin && !oWin) setWinner("draw");
     });
-  }, [oIndexes, xIndexes, fullfill]);
-
-  console.log(winner);
+  }, [oIndexes, xIndexes, fullfill, setWinner]);
 
   const handleClick = e => {
     if (e.target.innerText !== "") return;
