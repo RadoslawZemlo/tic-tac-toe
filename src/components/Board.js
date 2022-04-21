@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GameOver from "./GameOver";
 
 const Board = ({ tiles, setTiles, x, setX }) => {
   const [winner, setWinner] = useState("");
@@ -63,17 +64,21 @@ const Board = ({ tiles, setTiles, x, setX }) => {
 
   return (
     <div className="board">
-      {tiles.map((tile, index) => (
-        <button
-          type="submit"
-          className="tile"
-          key={index}
-          value={index}
-          onClick={handleClick}
-        >
-          {tile}
-        </button>
-      ))}
+      {winner === "" ? (
+        tiles.map((tile, index) => (
+          <button
+            type="submit"
+            className="tile"
+            key={index}
+            value={index}
+            onClick={handleClick}
+          >
+            {tile}
+          </button>
+        ))
+      ) : (
+        <GameOver winner={winner} />
+      )}
     </div>
   );
 };
